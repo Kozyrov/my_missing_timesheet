@@ -1,7 +1,20 @@
 .time-entry-container {
     width: 80vw;
-    height: 10vh;
+    height: 13vh;
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+.time-entry-alternate {
+    width: 80vw;
+    height: 13vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: lightgray;
+}
+.date-container {
+    flex-basis: auto;
+    width: 16vw;
 }

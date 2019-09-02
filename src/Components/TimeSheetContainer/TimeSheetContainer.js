@@ -15,7 +15,8 @@ const daysOfTheWeek = [
 export const TimeSheetContainer = (props) =>
     <div className='time-sheet-container'>
         {daysOfTheWeek.map(
-            (item, key) => <TimeEntryContainer item={item} key={item + Math.random()} />
+            (day, key) =>
+            <TimeEntryContainer day={day} dayIndex={key} key={day + '_' + Math.random()} />  
         )}
     </div>
 

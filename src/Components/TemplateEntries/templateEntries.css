@@ -1,0 +1,9 @@
+.template-entry-btn {
+    flex-basis: auto;
+    display: flex;
+    justify-content: center;
+    border: solid 1px black;
+    width: 14vw;
+    height: 5vh;
+    margin: 10%;
+}
