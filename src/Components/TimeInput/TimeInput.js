@@ -1,6 +1,5 @@
-import { React, Component } from 'react';
+import React, { Component } from 'react';
 import './timeInput.css';
-import { emptyStatement } from '@babel/types';
 
 export class TimeInput extends Component {
     constructor (props) {
