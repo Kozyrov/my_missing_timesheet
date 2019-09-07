@@ -1,4 +1,4 @@
-export const state = {
+export const initialState = {
     results:[],
     entities:{
         'timesheets': {},
@@ -6,12 +6,12 @@ export const state = {
         'dates': {},
         'inputs': {},
         'templates': {
-            fullDay: {
+            'fullDay': {
                 enabled: true,
                 selected: false,
                 hours: 8
             },
-            halfday: {
+            'halfday': {
                 enabled: true,
                 selected: false,
                 hours: 4
