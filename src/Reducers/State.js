@@ -1,17 +1,17 @@
 export const initialState = {
-    results:[],
+    result: undefined, // normally an id corresponding to the currently viewed timesheet.
     entities:{
-        'timesheets': {},
-        'panels': {},
-        'dates': {},
-        'inputs': {},
-        'templates': {
-            'fullDay': {
+        timesheets: {},
+        panels: {},
+        dates: [],
+        inputs: {},
+        templates: {
+            fullDay: {
                 enabled: true,
                 selected: false,
                 hours: 8
             },
-            'halfday': {
+            halfday: {
                 enabled: true,
                 selected: false,
                 hours: 4

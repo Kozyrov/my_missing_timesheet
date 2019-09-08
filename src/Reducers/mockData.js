@@ -1,3 +1,6 @@
+export const getWeeklyPayPeriod = () => {
+    return mockWeeklyPayPeriod;
+}
 export const mockWeeklyPayPeriod = {
     workdays: [
         {
