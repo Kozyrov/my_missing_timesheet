@@ -1,14 +1,16 @@
 import {
     CREATE_TIMESHEET,
-    ASSIGN_PAYPERIOD
+    ASSIGN_PAY_PERIOD,
+    // REGISTER_INPUT
 } from '../Actions/ActionTypes';
 import { initialState } from './State';
 import panelGenerator from '../EntityGenerators/panelGenerator';
+import inputGenerator from '../EntityGenerators/inputGenerator';
 
 const initialEntities = initialState.entities;
 
 export const timesheets = (state = initialEntities, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case CREATE_TIMESHEET:
             return {
                 ...state,
@@ -29,16 +31,21 @@ export const panels = (state = initialEntities , action) => {
         case CREATE_TIMESHEET:
             return {
                 ...state,
-                panels: panelGenerator(action.payload.payPeriod),
+                panels: panelGenerator(action.payload.payPeriod)
             }
+        // case REGISTER_INPUT: 
+        //     return {
+        //         ...state,
+
+        //     }
         default: 
             return state;
     }
 }
 
 export const dates = (state = initialEntities, action) => {
-    switch(action.type) {
-        case (ASSIGN_PAYPERIOD || CREATE_TIMESHEET):
+    switch (action.type) {
+        case (ASSIGN_PAY_PERIOD || CREATE_TIMESHEET):
             return action.payload.payPeriod;
         default:
             return state;
@@ -46,5 +53,13 @@ export const dates = (state = initialEntities, action) => {
 }
 
 export const inputs = (state = initialEntities, action) => {
-    return state;
+    switch (action.type) {
+        case CREATE_TIMESHEET:
+            return {
+                ...state,
+                inputs: inputGenerator(action.payload.payPeriod)
+            }
+        default:
+            return state;
+    }
 }

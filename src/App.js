@@ -1,8 +1,8 @@
 import React from 'react';
-import { TimeSheetContainer } from './Components/TimeSheetContainer/TimeSheetContainer';
+import TimeSheetContainer from './Containers/TimeSheetContainer';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div className="app-container">
       <TimeSheetContainer />

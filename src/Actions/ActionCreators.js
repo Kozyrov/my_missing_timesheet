@@ -1,7 +1,4 @@
-import { getWeeklyPayPeriod } from '../Reducers/mockData';
-
-import { uuiv1 } from 'uuiv/v1';
-import { CREATE_TIMESHEET, ASSIGN_PAY_PERIOD } from './ActionTypes';
+import { CREATE_TIMESHEET, ASSIGN_PAY_PERIOD, REGISTER_INPUT } from './ActionTypes';
 
 // param: Array<date> payPeriod
 export function assignPayPeriod(payPeriod) {
@@ -13,7 +10,8 @@ export function assignPayPeriod(payPeriod) {
 
 //param: Array<date> payPeriod
 export function newTimesheet(payPeriod) {
-    const ID = uuiv1(); // create a new timestamp generated uuid
+    const uuidv1 = require('uuid/v1');
+    const ID = uuidv1(); // create a new timestamp generated uuid
     return {
         type: CREATE_TIMESHEET,
         payload: {
@@ -21,4 +19,12 @@ export function newTimesheet(payPeriod) {
             payPeriod
         }
     } 
+}
+
+//param: int inputID used to create relationships between the input field and it's parent container(s)
+export function registerInput(inputID) {
+    return {
+        type: REGISTER_INPUT,
+        inputID
+    }
 }
