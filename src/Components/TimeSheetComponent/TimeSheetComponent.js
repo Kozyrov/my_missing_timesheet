@@ -12,7 +12,6 @@ const daysOfTheWeek = [
 ]
 
 const TimeSheetComponent = (props) => {
-    console.log(props);
     return (
         <div className='time-sheet-container'>
             {daysOfTheWeek.map(

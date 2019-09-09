@@ -1,5 +1,5 @@
 export const initialState = {
-    result: undefined, // normally an id corresponding to the currently viewed timesheet.
+    result: null, // normally an id corresponding to the currently viewed timesheet.
     entities:{
         timesheets: {},
         panels: {},
