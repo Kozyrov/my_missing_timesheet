@@ -4,7 +4,7 @@ import TimeSheetComponent from '../Components/TimeSheetComponent/TimeSheetCompon
 
 const mapStateToProps = state => {
     return {
-        timesheets: state.entities.timesheets
+        timesheets: state
     }
 }
 
