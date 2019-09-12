@@ -3,7 +3,7 @@ import {
     CREATE_TIMESHEET
 } from "../Actions/ActionTypes";
 
-const result = (state, action) => {
+const result = (state = null, action) => {
     switch (action.type) {
         case SET_CURRENT_TIMESHEET:
             return action.payload.result;
