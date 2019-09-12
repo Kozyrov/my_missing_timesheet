@@ -17,7 +17,7 @@ export const timesheets = (state = initialEntities, action) => {
                 timesheets: {
                     [action.payload.ID] : {
                         id: action.payload.ID,
-                        panels: Object.keys(state.panels)
+                        panels: []
                     }
                 }
             }
