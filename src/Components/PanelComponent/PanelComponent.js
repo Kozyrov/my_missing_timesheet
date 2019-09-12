@@ -1,7 +1,7 @@
 import React from 'react';
 import './panelComponent.css';
-import { TimeInput } from '../TimeInput/TimeInput';
-import { TemplateEntries } from '../TemplateEntries/TemplateEntries';
+import InputComponent from '../InputComponent/InputComponent';
+import TemplateComponent from '../TemplateComponent/TemplateCompnent';
 
 const alternatingBackground = props => {
     if (props.dayIndex % 2 > 0){
@@ -13,8 +13,8 @@ const alternatingBackground = props => {
 const PanelContainer = props => 
     <div className={alternatingBackground(props)}>
         <div className='date-container'>{props.day}</div>
-        <TimeInput />
-        <TemplateEntries /> 
+        <InputComponent />
+        <TemplateComponent /> 
     </div>
 
 export default PanelContainer;

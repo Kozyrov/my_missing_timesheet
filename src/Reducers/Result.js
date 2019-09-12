@@ -2,11 +2,11 @@ import {
     SET_CURRENT_TIMESHEET,
     CREATE_TIMESHEET
 } from "../Actions/ActionTypes";
-import { initialState } from './State';
+import initialState from './State';
 
-var initialResult = initialState.result;
+const initalResult = initialState.result;
 
-const result = (state = initialResult, action) => {
+const result = (state = initalResult, action) => {
     switch (action.type) {
         case SET_CURRENT_TIMESHEET:
             return action.payload.result;

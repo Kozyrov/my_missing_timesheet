@@ -3,7 +3,7 @@ import PanelComponent from '../Components/PanelComponent/PanelComponent';
 
 const mapStateToProps = state => {
     return {
-        timesheets: state.entities.panels
+        panels: state
     }
 }
 
