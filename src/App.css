@@ -3,7 +3,7 @@
   flex-flow: column;
   border: solid 1px black;
   flex-basis: auto;
-  height: 99vh;
+  height: 100vh;
   align-items: center;
   justify-content: center;
 }

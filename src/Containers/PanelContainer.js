@@ -14,6 +14,6 @@ const mapDispatchToProps = dispatch => {
 const PanelContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(PanelComponent)
+)(PanelComponent);
 
 export default PanelContainer;

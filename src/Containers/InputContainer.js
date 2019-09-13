@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import InputComponent from '../App';
+import InputComponent from '../Components/InputComponent/InputComponent';
 
 const mapStateToProps = state => {
     return {
@@ -14,6 +14,6 @@ const mapDispatchToProps = dispatch => {
 const AppContainer = connect (
     mapStateToProps,
     mapDispatchToProps
-)(App)
+)(InputComponent);
 
 export default AppContainer;

@@ -7,3 +7,4 @@ export const REGISTER_INPUT = ' REGISTER_INPUT';
 export const SELECT_INPUT = 'SELECT_INPUT'; // user selects which input to enter their hours into
 export const ENTER_TIME = 'ENTER_TIME'; // user enters the amount of time they worked
 export const SELECT_TEMPLATE = 'SELECT_TEMPLATE'; // user picks a template to quickly enter time
+export const FETCH_TIMESHEET = 'FETCH_TIMESHEET'; // Async get action; encompases request, return error, and return success by modfying status property
