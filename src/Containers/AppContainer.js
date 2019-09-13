@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { requestTimeSheet } from '../Actions/ActionCreators';
 import App from '../App';
 
 const mapStateToProps = state => {
@@ -9,7 +10,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-
+        loadTimeSheet: result => {
+            dispatch(requestTimeSheet(result));
+        }
     }
 }
 
