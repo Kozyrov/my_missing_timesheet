@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import TimeSheetComponent from '../Components/TimeSheetComponent/TimeSheetComponent';
+import { requestTimeSheet } from '../Actions/ActionCreators';
 
 const mapStateToProps = state => {
     return {
@@ -9,8 +10,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        generateNewTimesheet: payPeriod => {
-            dispatch();
+        loadTimeSheet: result => {
+            dispatch(requestTimeSheet(result));
         }
     }
 }

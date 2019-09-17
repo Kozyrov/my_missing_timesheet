@@ -2,8 +2,7 @@ import React from 'react';
 import TimeSheetContainer from './Containers/TimeSheetContainer';
 import './App.css';
 
-const App = props => {
-  console.log(props);
+const App = () => {
   return (
     <div className="app-container">
       <TimeSheetContainer />

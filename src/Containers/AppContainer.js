@@ -10,9 +10,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        loadTimeSheet: result => {
-            dispatch(requestTimeSheet(result));
-        }
+        
     }
 }
 

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './timeSheetComponent.css';
-import PanelContainer from '../../Containers/PanelContainer';
+import PanelContainer from '../../Containers/PanelContainer'; 
+import { statement } from '@babel/template';
+
 const daysOfTheWeek = [
     'Monday',
     'Tuesday',
@@ -12,6 +14,13 @@ const daysOfTheWeek = [
 ]
 
 const TimeSheetComponent = (props) => {
+    const [result] = useState(props.timesheets.result);
+
+    if (result === null) {
+        const mockResult = '90034';
+        props.loadTimeSheet(mockResult);
+    }
+
     return (
         <div className='time-sheet-container'>
             {daysOfTheWeek.map(
