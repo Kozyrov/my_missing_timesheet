@@ -1,5 +1,7 @@
 const initialState = {
     result: null, // normally an id corresponding to the currently viewed timesheet.
+    error: false,
+    errorMessage: null,
     entities:{
         timesheets: {},
         panels: {},

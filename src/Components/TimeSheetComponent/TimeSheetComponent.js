@@ -13,11 +13,16 @@ const daysOfTheWeek = [
 ]
 
 const TimeSheetComponent = (props) => {
+    const url = new URLSearchParams(window.location.search);
     const [result] = useState(props.timesheets.result);
 
     if (result === null) {
-        const mockResult = '00000';
-        props.loadTimeSheet(mockResult);
+        const reqTimeSheetID = url.get('ID');
+        if (reqTimeSheetID != null) {
+            props.loadTimeSheet(reqTimeSheetID);
+        } else {
+            console.log("no ID provided.");
+        }
     }
 
     return (

@@ -4,28 +4,29 @@ import {
     REGISTER_INPUT,
     FETCH_TIMESHEET
 } from './ActionTypes';
-import { from } from 'rxjs';
-import { timesheets } from '../Reducers/mockData';
 
 // ASYNC Action Creators
 
 export const requestTimeSheet = (timeSheetID) => {
-    const thunk = (dispatch) => {
+    return (dispatch) => {
         dispatch(fetchTimeSheet(timeSheetID));
-        const request = from(fetch(timesheets[timeSheetID])); // fetching mock data
-        request.subscribe({
-            next(response) {
-                return dispatch(fetchTimeSheetSuccess(response));
-            },
-            error(err) {
-                return dispatch(fetchTimesheetError(err));
+        return fetch(
+            `http://localhost:4545/timesheet/${timeSheetID}`,
+            {
+                method: 'GET',
             }
-        })
+        )
+        .then(
+            response => response.json(),
+            error => dispatch(fetchTimeSheetError(error))
+        )
+        .then(
+            json => dispatch(fetchTimeSheetSuccess(json))
+        )
     }
-    return thunk;
 }
 
-//SYNCHRONUS Action Creators
+// SYNCHRONUS Action Creators
 
 // param: <int> timesheetID
 export const fetchTimeSheet = (timeSheetID) => {
@@ -36,7 +37,7 @@ export const fetchTimeSheet = (timeSheetID) => {
 }
 
 // param: error object
-export const fetchTimesheetError = (error) => {
+export const fetchTimeSheetError = (error) => { // TOTO: design more generic error handling actions
     return {
         type: FETCH_TIMESHEET,
         status: 'error',
