@@ -7,7 +7,7 @@ const result = (state = null, action) => {
         case FETCH_TIMESHEET:
             switch (action.status) {
                 case 'success':
-                    return action.timeSheetID;
+                    return action.response.ID;
                 default:
                     return state;
             }

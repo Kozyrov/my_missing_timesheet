@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import './timeSheetComponent.css';
 import PanelContainer from '../../Containers/PanelContainer'; 
 
@@ -13,15 +14,25 @@ const daysOfTheWeek = [
 ]
 
 const TimeSheetComponent = (props) => {
+    const result = useSelector(state => state.result);
+    const timesheet = null;
     const url = new URLSearchParams(window.location.search);
-    const [result] = useState(props.timesheets.result);
 
-    if (result === null) {
-        const reqTimeSheetID = url.get('ID');
-        if (reqTimeSheetID != null) {
-            props.loadTimeSheet(reqTimeSheetID);
+    useEffect(() => {
+        initTimeSheet();
+    })
+    
+    const initTimeSheet = () => {
+        if (result === null) {
+            const reqTimeSheetID = url.get('ID');
+            if (reqTimeSheetID != null) {
+                return props.loadTimeSheet(reqTimeSheetID);
+            } else {
+                console.log("no ID provided.");
+                return null;
+            }
         } else {
-            console.log("no ID provided.");
+
         }
     }
 
