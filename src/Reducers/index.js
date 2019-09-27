@@ -1,10 +1,14 @@
-import * as entities from './Entities';
+import {
+    timesheets,
+    dates,
+} from './Entities';
 import result from './Result';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
     result,
-    entities
+    timesheets,
+    dates
 })
 
 export default rootReducer;
