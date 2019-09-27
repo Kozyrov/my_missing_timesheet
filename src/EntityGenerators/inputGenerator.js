@@ -1,5 +1,5 @@
 import { registerInput } from '../Actions/ActionCreators';
-const inputGenerator = (payPeriod) => {
+export default inputGenerator = (payPeriod) => {
     const uuidv1 = require('uuid/v1');
     let inputs = {};
 
@@ -18,5 +18,3 @@ const inputGenerator = (payPeriod) => {
     })
     return inputs;
 }
-
-export default inputGenerator;

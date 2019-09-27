@@ -1,6 +1,7 @@
 import {
     timesheets,
     dates,
+    panels
 } from './Entities';
 import result from './Result';
 import { combineReducers } from 'redux';
@@ -8,7 +9,8 @@ import { combineReducers } from 'redux';
 const rootReducer = combineReducers({
     result,
     timesheets,
-    dates
+    dates,
+    panels
 })
 
 export default rootReducer;

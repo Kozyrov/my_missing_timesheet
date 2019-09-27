@@ -1,8 +1,6 @@
 import {
-    CREATE_TIMESHEET,
     FETCH_TIMESHEET
 } from '../Actions/ActionTypes';
-import inputGenerator from '../EntityGenerators/inputGenerator';
 
 export const timesheets = (state = {}, action) => {
     switch (action.type) {
@@ -11,8 +9,8 @@ export const timesheets = (state = {}, action) => {
                 case 'success':
                     return {
                         ...state,
-                        [action.response.ID]: {
-                            "id": action.response.ID,
+                        [action.payload.ID]: {
+                            "id": action.payload.ID,
                             "panels": [] 
                         }
                     }
@@ -27,7 +25,12 @@ export const timesheets = (state = {}, action) => {
 export const panels = (state = {} , action) => {
     switch (action.type) {
         case FETCH_TIMESHEET:
-            return state;
+            switch (action.status) {
+                case 'success':
+                    return action.payload.panels;
+                default: 
+                    return state;
+            }
         default: 
             return state;
     }
@@ -36,25 +39,21 @@ export const panels = (state = {} , action) => {
 export const dates = (state = [], action) => {
     switch (action.type) {
         case FETCH_TIMESHEET:
-                switch (action.status) {
-                    case 'success':
-                        return action.response.workdays;
-                    default: 
-                        return state;
-                }
+            switch (action.status) {
+                case 'success':
+                    return action.payload.dates;
+                default: 
+                    return state;
+            }
         default:
             return state;
     }
 }
 
 export const inputs = (state = {}, action) => {
-    switch (action.type) {
-        case CREATE_TIMESHEET:
-            return {
-                ...state,
-                inputs: inputGenerator(action.payload.payPeriod)
-            }
+    switch (action.type){
         default:
             return state;
     }
+    
 }

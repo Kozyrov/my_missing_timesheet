@@ -1,10 +1,12 @@
 import {
     CREATE_TIMESHEET,
-    ASSIGN_PAY_PERIOD,
+    CREATE_PANELS,
     REGISTER_INPUT,
     FETCH_TIMESHEET
 } from './ActionTypes';
 
+import panelGenerator from '../EntityGenerators/panelGenerator';
+import datesGenerator from '../EntityGenerators/datesGenerator';
 // ASYNC Action Creators
 
 export const requestTimeSheet = (timeSheetID) => {
@@ -21,7 +23,11 @@ export const requestTimeSheet = (timeSheetID) => {
             error => dispatch(fetchTimeSheetError(error))
         )
         .then(
-            json => dispatch(fetchTimeSheetSuccess(json))
+            json => {
+                json["ID"] = timeSheetID;
+                dispatch(fetchTimeSheetSuccess(json))
+            }
+                
         )
     }
 }
@@ -50,15 +56,18 @@ export const fetchTimeSheetSuccess = (response) => {
     return {
         type: FETCH_TIMESHEET,
         status: 'success',
-        response
+        payload:{
+            ID: response.ID,
+            dates: datesGenerator(response.workdays),
+            panels: panelGenerator(response.workdays)
+        }
     }
 }
 
-// param: Array<date> payPeriod
-export const assignPayPeriod = (payPeriod) => {
-    return { 
-        type: ASSIGN_PAY_PERIOD,
-        payPeriod
+export const createPanels = (panels) => {
+    return {
+        type: CREATE_PANELS,
+        panels
     }
 }
 
