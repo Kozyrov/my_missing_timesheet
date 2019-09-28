@@ -1,6 +1,5 @@
 import {
     FETCH_TIMESHEET,
-    SELECT_INPUT,
     REGISTER_PANEL
 } from '../Actions/ActionTypes';
 
@@ -22,7 +21,9 @@ export const timesheets = (state = {}, action) => {
         case REGISTER_PANEL:
             return {
                 ...state,
-                panels: [...state.panels, action.payload.panelID]
+                [action.result]: {
+                    panels: [...state[action.result].panels, action.panelID]
+                }
             }
         default:
             return state;
@@ -37,11 +38,6 @@ export const panels = (state = {} , action) => {
                     return action.payload.panels;
                 default: 
                     return state;
-            }
-        case REGISTER_PANEL:
-            return {
-                ...state,
-                input: action.payload.inputID
             }
         default: 
             return state;
@@ -70,13 +66,6 @@ export const inputs = (state = {}, action) => {
                     return action.payload.inputs;
                 default: 
                     return state;
-            }
-        case SELECT_INPUT:
-            return {
-                ...state,
-                [action.ID]: {
-                    selected: !state[action.ID].selected
-                }
             }
         default:
             return state;

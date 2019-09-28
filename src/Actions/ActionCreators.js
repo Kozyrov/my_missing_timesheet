@@ -80,13 +80,11 @@ export const newTimeSheet = (payPeriod) => {
     } 
 }
 
-export const registerPanel = (panelID, InputID) => {
+export const registerPanel = (panelID, result) => {
     return {
         type: REGISTER_PANEL,
-        payload: {
-            panelID,
-            InputID
-        }
+        panelID,
+        result
     }
 }
 

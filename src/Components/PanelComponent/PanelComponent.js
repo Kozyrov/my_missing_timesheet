@@ -7,6 +7,7 @@ import { registerPanel } from '../../Actions/ActionCreators';
 
 const PanelContainer = props => {
     const dates = useSelector(state => state.dates);
+    const result = useSelector(state => state.result)
     const dispatch = useDispatch();
     const datesIndex = props.panel.datesIndex;
     const payday = dates[datesIndex];
@@ -17,9 +18,8 @@ const PanelContainer = props => {
 
     const initPanel = () => {
         if(props.panel.ID) {
-            dispatch(registerPanel(props.panel.ID, props.panel.input.ID));
+            dispatch(registerPanel(props.panel.ID, result));
         }
-
     }
 
     const alternatingBackground = () => {

@@ -1,24 +1,26 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { selectInput, registerInput } from '../../Actions/ActionCreators';
+import { useDispatch, useSelector } from 'react-redux';
+import { registerInput } from '../../Actions/ActionCreators';
 import './inputComponent.css';
 
 const InputComponent = props => {
     const dispatch = useDispatch();
-    const handleInput = (event) => {
-        dispatch(registerInput(props.input.ID, event.target.value));
-    }
+    const inputsState = useSelector(state => state.inputs);
+    const input = inputsState[props.input];
+
+    // const handleInput = (event) => {
+    //     console.log(event);
+    // }
     
     return <input
             type='number'
             placeholder='#'
             className='time-input'
             maxLength='2'
-            min={props.input.minValue}
-            max={props.input.maxValue}
-            value={props.input.value}
-            onClick={() => dispatch(selectInput(props.input.ID))}
-            onChange={handleInput}>
+            min={input.minValue}
+            max={input.maxValue}
+            value={input.value}
+            onChange={(event) => console.log(event)}>
             </input>;
 } 
 
