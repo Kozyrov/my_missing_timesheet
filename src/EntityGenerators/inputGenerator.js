@@ -1,9 +1,8 @@
-import { registerInput } from '../Actions/ActionCreators';
-export default inputGenerator = (payPeriod) => {
+const inputGenerator = (payPeriod) => {
     const uuidv1 = require('uuid/v1');
     let inputs = {};
 
-    payPeriod.forEach((payday, index) => {
+    payPeriod.forEach(() => {
         const inputID = uuidv1();
         
         inputs[inputID] = {
@@ -11,10 +10,10 @@ export default inputGenerator = (payPeriod) => {
             selected: false,
             maxValue: 24,
             minValue: 0,
-            value: null
+            value: 21
         }
-
-        registerInput(inputID); // register the inputID with the parent component
     })
-    return inputs;
+    return inputs
 }
+
+export default inputGenerator;

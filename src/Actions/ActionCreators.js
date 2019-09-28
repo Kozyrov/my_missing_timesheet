@@ -1,12 +1,14 @@
 import {
     CREATE_TIMESHEET,
-    CREATE_PANELS,
-    REGISTER_INPUT,
-    FETCH_TIMESHEET
+    SELECT_INPUT,
+    RECORD_INPUT,
+    FETCH_TIMESHEET,
+    REGISTER_PANEL
 } from './ActionTypes';
 
 import panelGenerator from '../EntityGenerators/panelGenerator';
 import datesGenerator from '../EntityGenerators/datesGenerator';
+import inputGenerator from '../EntityGenerators/inputGenerator';
 // ASYNC Action Creators
 
 export const requestTimeSheet = (timeSheetID) => {
@@ -59,15 +61,9 @@ export const fetchTimeSheetSuccess = (response) => {
         payload:{
             ID: response.ID,
             dates: datesGenerator(response.workdays),
-            panels: panelGenerator(response.workdays)
+            panels: panelGenerator(response.workdays),
+            inputs: inputGenerator(response.workdays)
         }
-    }
-}
-
-export const createPanels = (panels) => {
-    return {
-        type: CREATE_PANELS,
-        panels
     }
 }
 
@@ -84,10 +80,34 @@ export const newTimeSheet = (payPeriod) => {
     } 
 }
 
-// param: int inputID used to create relationships between the input field and it's parent container(s)
-export const registerInput = (inputID) => {
+export const registerPanel = (panelID, InputID) => {
     return {
-        type: REGISTER_INPUT,
-        inputID
+        type: REGISTER_PANEL,
+        payload: {
+            panelID,
+            InputID
+        }
+    }
+}
+
+export const registerInput = (ID) => {
+
+}
+
+// param: int inputID used to create relationships between the input field and it's parent container(s)
+export const recordInput = (ID, value) => {
+    return {
+        type: RECORD_INPUT,
+        payload: {
+            ID,
+            value
+        }
+    }
+}
+
+export const selectInput = (ID) => {
+    return {
+        type: SELECT_INPUT,
+        ID
     }
 }
