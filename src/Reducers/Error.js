@@ -3,7 +3,7 @@ import { FETCH_TIMESHEET } from '../Actions/ActionCreators';
 export const hasError = (state = false, action) => {
     switch (action.type) {
         case FETCH_TIMESHEET:
-            switch(action.status) {
+            switch(action.payload.status) {
                 case 'error':
                     return true;
                 default:
@@ -17,9 +17,9 @@ export const hasError = (state = false, action) => {
 export const errorMessage = (state = null, action) => {
     switch (action.type) {
         case  FETCH_TIMESHEET:
-            switch(action.status) {
+            switch(action.payload.status) {
                 case 'error':
-                    return action.error.message;
+                    return action.payload.error.message;
                 default:
                     return state;
             }

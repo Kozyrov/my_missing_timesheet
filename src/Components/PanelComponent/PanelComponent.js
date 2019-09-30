@@ -1,14 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './panelComponent.css';
+import ErrorOverlay from '../ErrorOverlayComponent/ErrorOverlayComponent';
 import InputComponent from '../InputComponent/InputComponent';
-import TemplateComponent from '../TemplateComponent/TemplateCompnent';
+import TemplateComponent from '../TemplateComponent/TemplateComponent';
 import { registerPanel } from '../../Actions/ActionCreators';
 
 const PanelContainer = props => {
     const dates = useSelector(state => state.dates);
-    const result = useSelector(state => state.result)
+    const result = useSelector(state => state.result);
+    const panels = useSelector(state => state.timesheets[result].panels);
     const dispatch = useDispatch();
+    const [ hasError, toggleError] = useState(false);  
+    const [ errorMessage, setErrorMessage ] = useState(null);
+
     const datesIndex = props.panel.datesIndex;
     const payday = dates[datesIndex];
 
@@ -17,7 +22,8 @@ const PanelContainer = props => {
     })
 
     const initPanel = () => {
-        if(props.panel.ID) {
+        // checks to see if the panel has been registered. Important to prevent infinite re-rendering.
+        if(!panels.includes(props.panel.ID)) {
             dispatch(registerPanel(props.panel.ID, result));
         }
     }
@@ -37,7 +43,8 @@ const PanelContainer = props => {
                         <p>{payday.day}</p>
                         <p>{payday.value}</p>
                     </div>
-                    <InputComponent input={props.panel.input}/>
+                    <ErrorOverlay toggle={hasError} message={errorMessage} />
+                    <InputComponent input={props.panel.input} toggleError={toggleError} setErrorMessage={setErrorMessage} />
                     <TemplateComponent templates={props.panel.templates} /> 
                 </div>
             )

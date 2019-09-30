@@ -1,12 +1,13 @@
 import {
     FETCH_TIMESHEET,
-    REGISTER_PANEL
+    REGISTER_PANEL,
+    REGISTER_INPUT
 } from '../Actions/ActionTypes';
 
 export const timesheets = (state = {}, action) => {
     switch (action.type) {
         case FETCH_TIMESHEET:
-            switch (action.status) {
+            switch (action.payload.status) {
                 case 'success':
                     return {
                         ...state,
@@ -21,8 +22,8 @@ export const timesheets = (state = {}, action) => {
         case REGISTER_PANEL:
             return {
                 ...state,
-                [action.result]: {
-                    panels: [...state[action.result].panels, action.panelID]
+                [action.payload.result]: {
+                    panels: [...state[action.payload.result].panels, action.payload.panelID]
                 }
             }
         default:
@@ -33,7 +34,7 @@ export const timesheets = (state = {}, action) => {
 export const panels = (state = {} , action) => {
     switch (action.type) {
         case FETCH_TIMESHEET:
-            switch (action.status) {
+            switch (action.payload.status) {
                 case 'success':
                     return action.payload.panels;
                 default: 
@@ -47,7 +48,7 @@ export const panels = (state = {} , action) => {
 export const dates = (state = [], action) => {
     switch (action.type) {
         case FETCH_TIMESHEET:
-            switch (action.status) {
+            switch (action.payload.status) {
                 case 'success':
                     return action.payload.dates;
                 default: 
@@ -61,11 +62,19 @@ export const dates = (state = [], action) => {
 export const inputs = (state = {}, action) => {
     switch (action.type){
         case FETCH_TIMESHEET:
-            switch (action.status) {
+            switch (action.payload.status) {
                 case 'success':
                     return action.payload.inputs;
                 default: 
                     return state;
+            }
+        case REGISTER_INPUT:
+            return {
+                ...state,
+                [action.payload.ID]: {
+                    ...state[action.payload.ID],
+                    value: action.payload.value
+                }
             }
         default:
             return state;

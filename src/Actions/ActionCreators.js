@@ -1,10 +1,12 @@
 import {
-    CREATE_TIMESHEET,
     SELECT_INPUT,
-    RECORD_INPUT,
     FETCH_TIMESHEET,
-    REGISTER_PANEL
+    REGISTER_PANEL,
+    REGISTER_INPUT
 } from './ActionTypes';
+
+//TODO: payload for every action creator
+
 
 import panelGenerator from '../EntityGenerators/panelGenerator';
 import datesGenerator from '../EntityGenerators/datesGenerator';
@@ -40,7 +42,9 @@ export const requestTimeSheet = (timeSheetID) => {
 export const fetchTimeSheet = (timeSheetID) => {
     return {
         type: FETCH_TIMESHEET,
-        timeSheetID
+        payload: {
+            timeSheetID
+        }
     }
 }
 
@@ -48,8 +52,10 @@ export const fetchTimeSheet = (timeSheetID) => {
 export const fetchTimeSheetError = (error) => { // TOTO: design more generic error handling actions
     return {
         type: FETCH_TIMESHEET,
-        status: 'error',
-        error
+        payload: {
+            status: 'error',
+            error
+        }
     }
 }
 
@@ -57,8 +63,8 @@ export const fetchTimeSheetError = (error) => { // TOTO: design more generic err
 export const fetchTimeSheetSuccess = (response) => {
     return {
         type: FETCH_TIMESHEET,
-        status: 'success',
         payload:{
+            status: 'success',
             ID: response.ID,
             dates: datesGenerator(response.workdays),
             panels: panelGenerator(response.workdays),
@@ -67,45 +73,33 @@ export const fetchTimeSheetSuccess = (response) => {
     }
 }
 
-// param: Array<date> payPeriod
-export const newTimeSheet = (payPeriod) => {
-    const uuidv1 = require('uuid/v1');
-    const ID = uuidv1(); // create a new timestamp generated uuid
-    return {
-        type: CREATE_TIMESHEET,
-        payload: {
-            ID,
-            payPeriod
-        }
-    } 
-}
-
 export const registerPanel = (panelID, result) => {
     return {
         type: REGISTER_PANEL,
-        panelID,
-        result
-    }
-}
-
-export const registerInput = (ID) => {
-
-}
-
-// param: int inputID used to create relationships between the input field and it's parent container(s)
-export const recordInput = (ID, value) => {
-    return {
-        type: RECORD_INPUT,
         payload: {
-            ID,
-            value
+            panelID,
+            result
         }
     }
 }
+
+export const registerInput = (ID, value) => {
+    return {
+        type: REGISTER_INPUT,
+        payload: {
+            ID, 
+            value
+        }
+    }
+
+}
+
 
 export const selectInput = (ID) => {
     return {
         type: SELECT_INPUT,
-        ID
+        payload: {
+            ID
+        }
     }
 }

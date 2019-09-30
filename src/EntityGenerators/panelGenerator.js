@@ -7,7 +7,7 @@ const panelGenerator = (payPeriod) => {
         panels[concatKey] = { //create object containing necessary relationships and data.
             ID: concatKey,
             datesIndex: index, // index of the payday in payPeriod Array
-            input: index,
+            input: `${concatKey}_${index}`,
             templates: [
                 'fullday',
                 'halfday'

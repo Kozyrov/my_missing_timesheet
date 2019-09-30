@@ -4,13 +4,19 @@ import { registerInput } from '../../Actions/ActionCreators';
 import './inputComponent.css';
 
 const InputComponent = props => {
+    const input = useSelector(state => state.inputs[props.input]);
     const dispatch = useDispatch();
-    const inputsState = useSelector(state => state.inputs);
-    const input = inputsState[props.input];
 
-    // const handleInput = (event) => {
-    //     console.log(event);
-    // }
+    const handleInput = (event) => {
+        let entry = event.target;
+        if (entry.reportValidity()) {
+            dispatch(registerInput(input.ID, entry.value));
+        } else {
+            props.toggleError(true);
+            props.setErrorMessage(entry.validationMessage);
+        }
+    }
+    
     
     return <input
             type='number'
@@ -20,7 +26,7 @@ const InputComponent = props => {
             min={input.minValue}
             max={input.maxValue}
             value={input.value}
-            onChange={(event) => console.log(event)}>
+            onChange={(event) => handleInput(event)}>
             </input>;
 } 
 
