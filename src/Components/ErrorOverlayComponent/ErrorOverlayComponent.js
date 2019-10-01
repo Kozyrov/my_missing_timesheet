@@ -1,13 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import './errorOverlayComponent.css';
 
 const ErrorOverlay = props => {
-    const status = useSelector((state) => state.panels[props.panelID].hasError)
+    const overlayID = `error_${props.panelID}`;
 
     const renderError = () => {
-        if(!status) {
-            return <span className="error-overlay">TESTTESTTEST{props.errorMessage}</span>
+        if(!props.toggle) {
+            setTimeout(() => document.getElementById(overlayID).style.display = 'none', 2600);
+            return <span id={overlayID} className="error-overlay">{props.message}</span>
         } else {
             return null;
         }

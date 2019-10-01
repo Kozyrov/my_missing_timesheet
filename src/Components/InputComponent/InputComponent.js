@@ -9,10 +9,9 @@ const InputComponent = props => {
 
     const handleInput = (event) => {
         let entry = event.target;
-        if (entry.reportValidity()) {
+        if (entry.checkValidity()) {
             dispatch(registerInput(input.ID, entry.value));
         } else {
-            props.toggleError(true);
             props.setErrorMessage(entry.validationMessage);
         }
     }

@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    position: relative;
 }
 
 .time-entry-alternate {
@@ -13,9 +14,10 @@
     align-items: center;
     justify-content: space-around;
     background-color: lightgray;
+    position: relative;
 }
 .date-container {
     flex-basis: auto;
     width: 16vw;
-    position: relative;
+    line-height: 60%;
 }

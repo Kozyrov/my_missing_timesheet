@@ -11,8 +11,9 @@ const PanelContainer = props => {
     const result = useSelector(state => state.result);
     const panels = useSelector(state => state.timesheets[result].panels);
     const dispatch = useDispatch();
-    const [ hasError, toggleError] = useState(false);  
     const [ errorMessage, setErrorMessage ] = useState(null);
+
+    const hasError = errorMessage ? true : false;
 
     const datesIndex = props.panel.datesIndex;
     const payday = dates[datesIndex];
@@ -44,7 +45,7 @@ const PanelContainer = props => {
                         <p>{payday.value}</p>
                     </div>
                     <ErrorOverlay panelID={props.panel.ID} toggle={hasError} message={errorMessage} />
-                    <InputComponent input={props.panel.input} toggleError={toggleError} setErrorMessage={setErrorMessage} />
+                    <InputComponent input={props.panel.input} setErrorMessage={setErrorMessage} />
                     <TemplateComponent templates={props.panel.templates} /> 
                 </div>
             )
