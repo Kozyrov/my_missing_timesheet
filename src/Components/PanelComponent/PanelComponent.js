@@ -43,7 +43,7 @@ const PanelContainer = props => {
                         <p>{payday.day}</p>
                         <p>{payday.value}</p>
                     </div>
-                    <ErrorOverlay toggle={hasError} message={errorMessage} />
+                    <ErrorOverlay panelID={props.panel.ID} toggle={hasError} message={errorMessage} />
                     <InputComponent input={props.panel.input} toggleError={toggleError} setErrorMessage={setErrorMessage} />
                     <TemplateComponent templates={props.panel.templates} /> 
                 </div>

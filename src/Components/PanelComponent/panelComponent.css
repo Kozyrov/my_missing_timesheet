@@ -17,4 +17,5 @@
 .date-container {
     flex-basis: auto;
     width: 16vw;
+    position: relative;
 }
