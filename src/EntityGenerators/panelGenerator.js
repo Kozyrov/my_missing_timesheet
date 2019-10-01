@@ -8,10 +8,6 @@ const panelGenerator = (payPeriod) => {
             ID: concatKey,
             datesIndex: index, // index of the payday in payPeriod Array
             input: `${concatKey}_${index}`,
-            templates: [
-                'fullday',
-                'halfday'
-            ]
         }; 
     });
     

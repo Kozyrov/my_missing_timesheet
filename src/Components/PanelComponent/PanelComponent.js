@@ -46,7 +46,7 @@ const PanelContainer = props => {
                     </div>
                     <ErrorOverlay panelID={props.panel.ID} toggle={hasError} message={errorMessage} />
                     <InputComponent input={props.panel.input} setErrorMessage={setErrorMessage} />
-                    <TemplateComponent templates={props.panel.templates} /> 
+                    <TemplateComponent inputID={props.panel.input} setErrorMessage={setErrorMessage} /> 
                 </div>
             )
         } else {
