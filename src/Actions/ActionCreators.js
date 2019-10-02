@@ -31,7 +31,6 @@ export const requestTimeSheet = (timeSheetID) => {
                 json["ID"] = timeSheetID;
                 dispatch(fetchTimeSheetSuccess(json))
             }
-                
         )
     }
 }

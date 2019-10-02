@@ -8,13 +8,14 @@ const TemplateComponent = props => {
     const dispatch = useDispatch();
 
     const fullDayTemplate = () => {
-        const template = 8;
-        if (input.value + template > input.maxValue) {
+        const templateIncrease = input.value + 8;
+        if (templateIncrease > input.maxValue) {
             props.setErrorMessage(`Value must be equal to or less than ${input.maxValue}`)
         } else {
-            dispatch(registerInput(input.ID, template));
+            dispatch(registerInput(input.ID, templateIncrease));
         }
     }
+    return <div className="template-entry-btn" onClick={fullDayTemplate}>+8 Hrs</div>
 }
 
 export default TemplateComponent;
