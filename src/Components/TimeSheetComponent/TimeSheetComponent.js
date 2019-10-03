@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { requestTimeSheet } from '../../Actions/ActionCreators';
 import './timeSheetComponent.css';
-import PanelContainer from '../../Containers/PanelContainer'; 
+import PanelComponent from '../../Components/PanelComponent/PanelComponent'; 
 
 const TimeSheetComponent = () => {
     const result = useSelector(state => state.result); // TODO: move this to the App component
@@ -34,7 +34,7 @@ const TimeSheetComponent = () => {
                 <div className='time-sheet-container'>
                     {Object.entries(panels).map(
                         ([ID, panel]) =>
-                        <PanelContainer panel={panel} key={ID} />  
+                        <PanelComponent panel={panel} key={ID} />  
                     )}
                 </div>
             )

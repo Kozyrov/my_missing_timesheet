@@ -1,11 +1,11 @@
 import React from 'react';
-import TimeSheetContainer from './Containers/TimeSheetContainer';
+import TimeSheetComponent from './Components/TimeSheetComponent/TimeSheetComponent';
 import './App.css';
 
 const App = () => {
   return (
     <div className="app-container">
-      <TimeSheetContainer />
+      <TimeSheetComponent />
     </div>
   );
 }
