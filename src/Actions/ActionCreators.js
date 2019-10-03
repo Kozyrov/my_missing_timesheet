@@ -15,7 +15,7 @@ import inputGenerator from '../EntityGenerators/inputGenerator';
 
 export const requestTimeSheet = (timeSheetID) => {
     return (dispatch) => {
-        dispatch(fetchTimeSheet(timeSheetID));
+        dispatch(fetchTimeSheet());
         return fetch(
             `http://localhost:4545/timesheet/${timeSheetID}`,
             {
@@ -38,12 +38,10 @@ export const requestTimeSheet = (timeSheetID) => {
 // SYNCHRONUS Action Creators
 
 // param: <int> timesheetID
-export const fetchTimeSheet = (timeSheetID) => {
+export const fetchTimeSheet = () => {
     return {
         type: FETCH_TIMESHEET,
-        payload: {
-            timeSheetID
-        }
+        payload: {}
     }
 }
 
