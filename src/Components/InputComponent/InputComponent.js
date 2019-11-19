@@ -16,7 +16,6 @@ const InputComponent = props => {
         }
     }
     
-    
     return <input
             type='number'
             placeholder='#'
